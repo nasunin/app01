@@ -2,12 +2,12 @@ class User < ActiveRecord::Base
 	before_validation { self.email_for_index = email.downcase }
 	before_create do
 		self.usercd = (self.name)[0,6]
-
-#		if 0 == "SELECT count(*) FROM users"
-#			self.usercd = 1
-#		else
-#			self.usercd = "SELECT max(usercd) FROM users" + 1
-#		end
+		if 0 == User.count
+			self.usercd = "1"
+		else
+			dummycd = User.maximum(:usercd).to_i + 1
+			self.usercd = dummycd.to_s
+		end
 	end
 	before_create :create_remember_token
 
@@ -27,7 +27,8 @@ class User < ActiveRecord::Base
   validates :sex,             presence:true, length: { is: 1 }
   validates :f_year,          presence:true
   validates :f_birthday,      presence:true
-  validates :birthday,        presence:true
+#  validates :birthday,        presence:true
+  validates_date :birthday,		format: '%Y/%m/%d'
   validates :f_origin_place,  presence:true
   validates :f_hobby,         presence:true
   validates :hobby1,          length: { maximum: 30 }
@@ -41,16 +42,19 @@ class User < ActiveRecord::Base
   validates :f_genus,         presence:true
   validates :introduction,    length: { maximum: 1000 }
 
+	#remember_token属性作成に必要
   def User.new_remember_token
     SecureRandom.urlsafe_base64
   end
 
+	#remember_token属性作成に必要
   def User.encrypt(token)
     Digest::SHA1.hexdigest(token.to_s)
   end
 
   private
 
+		#remember_token属性作成に必要
     def create_remember_token
       self.remember_token = User.encrypt(User.new_remember_token)
     end

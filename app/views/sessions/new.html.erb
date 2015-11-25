@@ -3,6 +3,9 @@
 
 <div class="row">
   <div class="span6 offset3">
+    <!--	#form_tag(リンク先 [オプション　method:HTTPメソッドを指定　])
+      form_for: 任意のmodelに基づいたformを作るときに使う
+      form_tag: modelに基づかないformを作るときに使う　!-->
     <%= form_tag( sessions_path, method: 'new' ) do %>
 
       <%= label_tag 'Email' %>
