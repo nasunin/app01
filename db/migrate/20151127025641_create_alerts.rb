@@ -10,6 +10,6 @@ class CreateAlerts < ActiveRecord::Migration
       t.timestamps
     end
 
-    add_index :alerts, :usercd, :alertusercd, :alertbranchnum, unique: true
+    add_index :alerts, [:usercd, :alertusercd, :alertbranchnum], unique: true
   end
 end

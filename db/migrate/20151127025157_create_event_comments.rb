@@ -10,6 +10,6 @@ class CreateEventComments < ActiveRecord::Migration
 
       t.timestamps
     end
-    add_index :event_comments, :eventcd, :seq, unique: true
+    add_index :event_comments, [:eventcd, :seq], unique: true
   end
 end

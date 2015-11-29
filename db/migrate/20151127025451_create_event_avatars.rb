@@ -9,6 +9,6 @@ class CreateEventAvatars < ActiveRecord::Migration
       t.timestamps
     end
 
-    add_index :event_avatars, :eventcd, :usercd, unique: true
+    add_index :event_avatars, [:eventcd, :usercd], unique: true
   end
 end

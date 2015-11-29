@@ -1,22 +1,67 @@
 <%= render 'shared/error_messages', object: f.object %>
 
-<%= f.label :name %>
-<%= f.text_field :name %>
-
-<%= f.label :email %>
-<%= f.text_field :email %>
-
-<%= f.label :prefecturecd %>
-<%= f.text_field :prefecturecd %>
-
-<%= f.label :sex %>
-<%= f.text_field :sex %>
-
-<%= f.label :birthday %>
-<%= f.date_field :birthday, maxlength:8 %>
-
-<%= f.label :password %>
-<%= f.password_field :password %>
-
-<%= f.label :password_confirmation, "Confirm Password" %>
-<%= f.password_field :password_confirmation %>
+<table border="1">
+	<tr>
+		<th colspan="2">プロフィール</th>
+		<th width=160px>公開設定</th>
+	</tr><tr>
+		<td width=200px><%= f.label :name, "名前(*)" %></td>
+		<td width=600px><%= f.text_field :name %></td>
+		<td>　</td>
+	</tr><tr>
+		<td><%= f.label :email, "Email(*)" %></td>
+		<td><%= f.text_field :email %></td>
+		<td>　</td>
+	</tr><tr>
+		<td><%= f.label :prefecturecd, "拠点(*)" %></td>
+		<td><%= render 'shared/prefecture_list', f: f %>
+		    <%= f.text_field :city %></td>
+		<td><%= f.select :f_address, {"公開" => "true", "非公開" => "false"}  %></td>
+	</tr><tr>
+		<td><%= f.label :sex, "性別(*)" %></td>
+		<td>男性: <%= f.radio_button 'sex', '1', {:checked => true} %>
+　　女性: <%= f.radio_button 'sex', '2', {} %></td>
+		<td><%= f.select :f_sex, {"公開" => "true", "非公開" => "false"}  %></td>
+	</tr><tr>
+		<td><%= f.label :birthday, "生年月日(*)" %></td>
+		<td><%= f.date_field :birthday, maxlength:8 %></td>
+		<td><%= f.select :f_year, {"生年を公開" => "true", "非公開" => "false"}  %>
+		    <%= f.select :f_birthday, {"月日まで公開" => "true", "月日は非公開" => "false"}  %></td>
+	</tr><tr>
+		<td><%= f.label :blood %></td>
+		<td><%= f.select :blood, {"Ａ" => "A", "Ｂ" => "B", "Ｏ" => "O", "ＡＢ" => "AB"}, :include_blank => true   %></td>
+		<td>　</td>
+	</tr><tr>
+		<td><%= f.label :origin_place, "出身地" %></td>
+		<td><%= f.text_field :origin_place %></td>
+		<td><%= f.select :f_origin_place, {"公開" => "true", "非公開" => "false"}  %></td>
+	</tr><tr>
+		<td><%= f.label :hobby1, "趣味" %></td>
+		<td><%= f.text_field :hobby1 %>
+		    <%= f.text_field :hobby2 %>
+		    <%= f.text_field :hobby3 %>
+		    <%= f.text_field :hobby4 %>
+		    <%= f.text_field :hobby5 %></td>
+		<td><%= f.select :f_hobby, {"公開" => "true", "非公開" => "false"}  %></td>
+	</tr><tr>
+		<td><%= f.label :occupation, "職業" %></td>
+		<td><%= f.text_field :occupation %></td>
+		<td><%= f.select :f_occupation, {"公開" => "true", "非公開" => "false"}  %></td>
+	</tr><tr>
+		<td><%= f.label :genus, "所属" %></td>
+		<td><%= f.text_field :genus %></td>
+		<td><%= f.select :f_genus, {"公開" => "true", "非公開" => "false"}  %></td>
+	</tr><tr>
+		<td><%= f.label :introduction, "自己紹介" %></td>
+		<td><%= f.text_area :introduction, :size => "20x10" %></td>
+		<td>　</td>
+	</tr><tr>
+		<td><%= f.label :password, "パスワード(*)" %></td>
+		<td><%= f.password_field :password %></td>
+		<td>　</td>
+	</tr><tr>
+		<td><%= f.label :password_confirmation, "パスワード（確認用）(*)" %></td>
+		<td><%= f.password_field :password_confirmation %></td>
+		<td>　</td>
+	</tr>
+</table>

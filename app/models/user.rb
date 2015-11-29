@@ -20,26 +20,18 @@ class User < ActiveRecord::Base
   has_secure_password
   validates :password, length: { minimum: 6 }
   validates :name,  presence:true, length: { maximum: 50 }
-  validates :f_address,       presence:true
   validates :city,            length: { maximum: 50 }
   validates :prefecturecd,    presence:true
-  validates :f_sex,           presence:true
   validates :sex,             presence:true, length: { is: 1 }
-  validates :f_year,          presence:true
-  validates :f_birthday,      presence:true
 #  validates :birthday,        presence:true
   validates_date :birthday,		format: '%Y/%m/%d'
-  validates :f_origin_place,  presence:true
-  validates :f_hobby,         presence:true
   validates :hobby1,          length: { maximum: 30 }
   validates :hobby2,          length: { maximum: 30 }
   validates :hobby3,          length: { maximum: 30 }
   validates :hobby4,          length: { maximum: 30 }
   validates :hobby5,          length: { maximum: 30 }
-  validates :f_occupation,    presence:true
   validates :occupation,      length: { maximum: 30 }
   validates :genus,           length: { maximum: 30 }
-  validates :f_genus,         presence:true
   validates :introduction,    length: { maximum: 1000 }
 
 	#remember_token属性作成に必要

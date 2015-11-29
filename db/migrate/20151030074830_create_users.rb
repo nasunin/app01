@@ -15,7 +15,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string  :sex            , null: false                 # 性別
       t.boolean :f_year         , null: false, default: true  # 生年公開フラグ
       t.boolean :f_birthday     , null: false, default: true  # 生年月日公開フラグ
-      t.datetime:birthday       , null: false                 # 生年月日
+      t.date    :birthday       , null: false                 # 生年月日
       t.string  :blood                                        # 血液型
       t.boolean :f_origin_place , null: false, default: true  # 出身地公開フラグ
       t.string  :origin_place                                 # 出身地
