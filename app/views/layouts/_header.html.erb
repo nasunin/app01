@@ -10,7 +10,16 @@
             <% if current_user.admin? %>
               <li><%= link_to "ユーザー", users_path %></li>
             <% end %>
-            <li><%= link_to "イベント検索", search_path %></li>
+            <li id="fat-menu" class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                イベント <b class="caret"></b>
+              </a>
+              <ul class="dropdown-menu">
+                <li><%= link_to "検索", search_event_path %></li>
+                <li><%= link_to "登録", insert_event_path %></li>
+              </ul>
+            </li>
+
             <li id="fat-menu" class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                 個人設定 <b class="caret"></b>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151129015223) do
+ActiveRecord::Schema.define(version: 20151202030107) do
 
   create_table "alerts", force: true do |t|
     t.string   "usercd",         null: false
@@ -96,7 +96,6 @@ ActiveRecord::Schema.define(version: 20151129015223) do
     t.string   "subject"
     t.string   "description"
     t.date     "limit_date",   null: false
-    t.integer  "type",         null: false
     t.string   "key1"
     t.string   "key2"
     t.string   "key3"
@@ -110,6 +109,7 @@ ActiveRecord::Schema.define(version: 20151129015223) do
     t.string   "prefecturecd"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "typeno"
   end
 
   add_index "events", ["eventcd"], name: "index_events_on_eventcd", unique: true

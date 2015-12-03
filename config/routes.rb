@@ -1,15 +1,20 @@
 App01::Application.routes.draw do
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
+  resources :events
 
   root  'static_pages#home'
   match '/signup',  to: 'users#new',            via: 'get'
   match '/help',    to: 'static_pages#help',    via: 'get'
   match '/about',   to: 'static_pages#about',   via: 'get'
-  match '/search',  to: 'static_pages#search',  via: 'get'
+#  match '/search',  to: 'static_pages#search',  via: 'get'
   match '/sample',  to: 'static_pages#sample',  via: 'get'
   match '/signin',  to: 'sessions#new',         via: 'get'
   match '/signout', to: 'sessions#destroy',     via: 'delete'
+  match '/search_event',  to: 'events#search',    via: 'get'
+  match '/insert_event',  to: 'events#new',     via: 'get'
+#  match '/update_event',  to: 'events#update',  via: 'patch'
+# →メニューに更新／削除があるのはおかしい
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

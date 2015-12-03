@@ -1,0 +1,32 @@
+<%= render 'shared/error_messages', object: f.object %>
+<table border="1">
+	<tr>
+		<th>項目</th>
+		<th>設定</th>
+	</tr><tr>
+		<td width=200px><%= f.label :subject, "イベント名(*)" %></td>
+		<td width=600px><%= f.text_field :subject %></td>
+	</tr><tr>
+		<td><%= f.label :description, "説明" %></td>
+		<td><%= f.text_area :description, :size => "20x10" %></td>
+	</tr><tr>
+		<td><%= f.label :typeno, "種別(*)" %></td>
+		<td><%= f.select :typeno, EventType.all.map{|t| [t.typenm, t.seq]} %></td>
+	</tr><tr>
+		<td><%= f.label :key1, "キーワード" %></td>
+		<td><%= f.text_field :key1 %>
+		    <%= f.text_field :key2 %>
+		    <%= f.text_field :key3 %>
+		    <%= f.text_field :key4 %>
+		    <%= f.text_field :key5 %></td>
+	</tr><tr>
+		<td><%= f.label :public_date, "イベント公開日(*)" %></td>
+		<td><%= f.date_field :public_date, maxlength:8 %></td>
+	</tr><tr>
+		<td><%= f.label :end_date, "公開終了日(*)" %></td>
+		<td><%= f.date_field :end_date, maxlength:8 %><br>（公開期間は２ヶ月）</td>
+	</tr><tr>
+		<td><%= f.label :prefecturecd, "活動場所" %></td>
+		<td><%= render 'shared/prefecture_list', f: f %></td>
+	</tr>
+</table>

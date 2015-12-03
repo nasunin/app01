@@ -1,7 +1,6 @@
 class User < ActiveRecord::Base
 	before_validation { self.email_for_index = email.downcase }
 	before_create do
-		self.usercd = (self.name)[0,6]
 		if 0 == User.count
 			self.usercd = "1"
 		else
